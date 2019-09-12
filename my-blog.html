@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>"My Blog"</title>
+        <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="https://pratheekj7.github.io/theme/images/favicon.ico"/>
+        <link rel="stylesheet" href="https://pratheekj7.github.io/theme/css/main.css" type="text/css" />
+        <link href="https://pratheekj7.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Pratheek's Blog Atom Feed" />
+
+        <!--[if IE]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="https://pratheekj7.github.io/css/ie.css"/>
+                <script src="https://pratheekj7.github.io/js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="https://pratheekj7.github.io/css/ie6.css"/><![endif]-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js" type="text/javascript"></script>
+
+
+</head>
+
+<body id="index" class="home">
+	
+  <!-- <header id="banner" class="body"> -->
+  <!--               <h1><a href="https://pratheekj7.github.io/"><img src="http://www.launchyard.com/images/logo.png" /></a></h1> -->
+  <!--       </header> --> 
+
+  <div class="LaunchyardDetail">
+    <!-- <p> -->
+    <!-- <img src="https://pratheekj7.github.io/theme/images/blue-pin.png" width="100" height="100" alt="Graph icon"> -->
+    <!-- </p> -->
+    <p><a id="sitesubtitle" href="https://pratheekj7.github.io/"></a></p>
+    <p><a id="aboutlink" href="https://pratheekj7.github.io/pages/about.html">about</a></p>
+
+    <!-- <ul> -->
+    <!--   <li><a href="https://pratheekj7.github.io/pages/about.html">about</a></li> -->
+      <!-- <li><a href="https://pratheekj7.github.io/pages/about.html">articles</a></li> -->
+<!--  -->
+<!--         <br/> -->
+<!--         <br/> -->
+<!--      -->        
+<!--       <li><a href="">"My Blog"</a></li> -->
+<!--      -->
+<!--  -->
+    <!-- </ul> -->
+
+    <!-- This belongs in the about page -->
+      <!--  -->
+      <!-- <a href="#">You can add links in your config file</a> -->
+      <!-- <br/> -->
+      <!--  -->
+      <!-- <a href="#">Another social link</a> -->
+      <!-- <br/> -->
+      <!--  -->
+
+<!-- <ul>
+	<li><a href="https://pratheekj7.github.io/category/misc.html">misc</a></li>
+</ul>
+ -->
+  </div>
+
+<section id="content" >
+    <div class="body">
+      <article>
+        <header>
+          <h1 class="entry-title">
+            <a href="https://pratheekj7.github.io/my-blog.html" rel="bookmark"
+               title="Permalink to "My Blog"">"My Blog"</a></h1>
+
+        </header>
+
+        <div class="entry-content">
+<div class="post-info">
+	<ul>
+        <li class="vcard author">
+                 by&nbsp;<a class="url fn" href="https://pratheekj7.github.io/author/pratheek-jain.html">Pratheek Jain</a>
+        </li>
+        <li class="published" title="2019-09-10T15:52:55+05:30">
+          on&nbsp;Tue 10 September 2019
+        </li>
+
+	</ul>
+
+</div><!-- /.post-info -->          <p><strong>What is <em>SQL Injection</em>?</strong></p>
+<blockquote>
+<p>SQL injection is a code injection technique that might destroy your database.
+SQL injection is one of the most common web hacking techniques.
+SQL injection is the placement of malicious code in SQL statements, via web page input.</p>
+</blockquote>
+<p><strong>SQL in Web Pages</strong></p>
+<blockquote>
+<p>SQL injection usually occurs when you ask a user for input, like their username/userid, and instead of a name/id, the user gives you an SQL statement that you will unknowingly run on your database.</p>
+<p>Look at the following example which creates a SELECT statement by adding a variable (userId) to a select string. The variable is fetched from user input (getRequestString):</p>
+<p><strong>Example</strong>
+userId = getRequestString("UserId");
+sql = "SELECT * FROM Users WHERE UserId = " + userId;</p>
+</blockquote>
+<p><strong>SQL Injection Examples</strong>
+1. <em>SQL Injection Based on 1=1 is Always True</em></p>
+<blockquote>
+<p>Look at the example above again. The original purpose of the code was to create an SQL statement to select a user, with a given user id.</p>
+<p>If there is nothing to prevent a user from entering "wrong" input, the user can enter some "smart" input like this:</p>
+<p>userId: 
+105 OR 1=1</p>
+<p>Then, the SQL statement will look like this:</p>
+<p><strong>SELECT UserId, Name, Password FROM Users WHERE UserId = 105 or 1=1;</strong>
+The SQL above is valid and will return userId, name, password from the "Users" table, since OR 1=1 is always TRUE.</p>
+<p>A hacker might get access to all the user names and passwords in a database, by simply inserting 105 OR 1=1 into the input field.</p>
+</blockquote>
+<ol>
+<li><em>SQL Injection Based on ""="" is Always True</em><blockquote>
+<p>A hacker might get access to user names and passwords in a database by simply inserting " OR ""=" into the user name or password text box:</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>User Name:
+" or ""="
+Password:
+" or ""="</p>
+<p>The code at the server will create a valid SQL statement like this:</p>
+<p><strong>SELECT * FROM Users WHERE Name ="" or ""="" AND Pass ="" or ""="";</strong>
+The SQL above is valid and will return all rows from the "Users" table, since OR ""="" is always TRUE.</p>
+</blockquote>
+<ol>
+<li><em>SQL Injection Based on Batched SQL Statements</em> <blockquote>
+<p>A batch of SQL statements is a group of two or more SQL statements, separated by semicolons.</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>The SQL statement below will return all rows from the "Users" table, then delete the "Suppliers" table.
+<strong>SELECT * FROM Users; DROP TABLE Suppliers;</strong></p>
+<p>Look at the following example:</p>
+<p>userId = getRequestString("UserId");
+SQL = "SELECT * FROM Users WHERE UserId = " + userId;</p>
+<p>And the following input:
+user id: 
+105; DROP TABLE Suppliers</p>
+<p>The valid SQL statement would look like this:</p>
+<p><strong>SELECT * FROM Users WHERE UserId = 105; DROP TABLE Suppliers;</strong></p>
+</blockquote>
+<p><strong>Prevention Techniques</strong>
+1. Use of Prepared Statements (with Parameterized Queries)
+2. Use of Stored Procedures</p>
+        </div><!-- /.entry-content -->
+
+      </article>
+    </div>
+</section>
+        <section id="extras" >
+        
+        </section><!-- /#extras -->
+	
+        <footer id="contentinfo" >
+                <address id="about" class="vcard ">
+                Proudly powered by <a href="http://getpelican.com/" target="_blank">Pelican</a>, which takes
+                great advantage of <a href="http://python.org" target="_blank">Python</a>.
+		
+                </address><!-- /#about -->
+		
+
+                
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
